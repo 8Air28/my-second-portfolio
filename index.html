@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>グラフ描画ツール</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
+  </head>
+  <body>
+    <h1>グラフ描画ツール</h1>
+
+    <div id="input-area">
+      <div id="equation-container">
+        <div id="equation" contenteditable="true"></div>
+        <button onclick="clearEquation()" id="clear-btn">クリア</button>
+      </div>
+      <button onclick="addGraph()">描画</button>
+    </div>
+
+    <div id="angle-toggle-container">
+      <div id="angle-toggle">
+        <label class="switch">
+          <input type="checkbox" id="angle-switch" />
+          <span class="slider"></span>
+        </label>
+        <span class="label-text">ラジアン</span>
+      </div>
+    </div>
+
+    <div id="range-settings">
+      <label>x最小値: <input type="text" id="x-min" value="0" /></label>
+      <label>x最大値: <input type="text" id="x-max" value="2π" /></label>
+      <label>刻み幅: <input type="text" id="x-step" value="π/100" /></label>
+    </div>
+
+    <h2>数式入力用ボタン</h2>
+    <div class="btn-group">
+      <button onclick="insertVariable('Θ')">Θ</button>
+      <button onclick="insert('+')">+</button>
+      <button onclick="insert('-')">-</button>
+      <button onclick="insert('*')">×</button>
+      <button onclick="insert('/')">÷</button>
+      <button onclick="insert('^')">^</button>
+    </div>
+
+    <div class="btn-group">
+      <button onclick="insertFunction('sin')">sin</button>
+      <button onclick="insertFunction('cos')">cos</button>
+      <button onclick="insertFunction('tan')">tan</button>
+      <button onclick="insertFunction('log')">log</button>
+    </div>
+
+    <div class="btn-group">
+      <button onclick="insert('π')">π</button>
+      <button onclick="insert('e')">e</button>
+      <button onclick="insertFunction('(')">(</button>
+    </div>
+
+    <div id="graph"></div>
+
+    <h2>描画履歴</h2>
+    <div id="history"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
